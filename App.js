@@ -25,7 +25,7 @@ function App() {
         backgroundColor:"#f95c5c",
         padding:10,
         margin:10,
-    }
+    },
     })
 }
 
