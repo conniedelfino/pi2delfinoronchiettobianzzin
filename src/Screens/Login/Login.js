@@ -1,12 +1,9 @@
-import { auth } from 'ruta/a/firebase/config';
-import React from 'react';
+import {useState} from "react";
+import {View, Text, Pressable, StyleSheet} from "react-native";
+import { TextInput } from "react-native-web";
+import { db, auth } from "../../Firebase/config";
 
-function login (email, pass){
-    auth.signInWithEmailAndPassword(email, pass)
-    .then((response)=>{setLogin(true);
-    })
-    .catch(error => {
-        setLoginError("Credenciales invalidas.")
-    })
+function Login (props){
+    const
 }
 export default login;
