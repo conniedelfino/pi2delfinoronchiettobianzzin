@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
     return (
-        <NavigationContainer style={styles.container}>
+        <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Register" component={Register}/>
@@ -20,13 +20,6 @@ function App() {
         </NavigationContainer>
     );
 
-    const styles = StyleSheet.create({
-        container:{
-        backgroundColor:"#f95c5c",
-        padding:10,
-        margin:10,
-    },
-    })
 }
 
 export default App;
