@@ -11,6 +11,9 @@ function Login(props){
             <Pressable onPress={()=> props.navigation.navigate("Post")}>
                 <Text>Ir a Post</Text>
             </Pressable>
+            <Pressable onPress={()=> props.navigation.navigate("Navegacion")}>
+                <Text>Entrar a la App</Text>
+            </Pressable>
         </View>
     )
 }
