@@ -1,12 +1,15 @@
-import { auth } from 'ruta/a/firebase/config';
-import React from 'react';
+import { View, Text, Pressable } from 'react-native';
 
-function login (email, pass){
-    auth.signInWithEmailAndPassword(email, pass)
-    .then((response)=>{setLogin(true);
-    })
-    .catch(error => {
-        setLoginError("Credenciales invalidas.")
-    })
+function Login(props){
+    return(
+        <View>
+            <Text>Login</Text>
+
+            <Pressable onPress={()=> props.navigation.navigate("Register")}>
+                <Text>Ir a Register</Text>
+            </Pressable>
+        </View>
+    )
 }
-export default login;
+
+export default Login
