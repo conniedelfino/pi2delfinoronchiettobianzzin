@@ -8,13 +8,21 @@ const Stack = createNativeStackNavigator();
 
 function App() {
     return (
-        <NavigationContainer>
+        <NavigationContainer style={styles.container}>
             <Stack.Navigator>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Register" component={Register}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
+
+    const styles = StyleSheet.create({
+        container:{
+        backgroundColor:"#f95c5c",
+        padding:10,
+        margin:10,
+    },
+    })
 }
 
 export default App;
