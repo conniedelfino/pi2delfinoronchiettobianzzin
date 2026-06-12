@@ -15,4 +15,4 @@ function Navegacion(){
     )
 }
 
-export default Navegacion
+export default Navegacion;

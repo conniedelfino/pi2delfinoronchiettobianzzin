@@ -20,7 +20,9 @@ function Login(props){
 
     return(
         <View style={styles.container}>
+
             <Text style={styles.title}>Login</Text>
+
             <TextInput  style={styles.input} 
                     keyboardType='email-address' 
                     placeholder='Ingresa aqui tu email' 
@@ -39,9 +41,10 @@ function Login(props){
             </Pressable>
 
             <Pressable style={styles.button} onPress={()=> props.navigation.navigate("Register")}>
-                <Text style={styles.buttonTextoRegister}>No tengo cuenta</Text>
+                <Text style={styles.buttonTexto}>No tengo cuenta</Text>
             </Pressable>
-        
+            
+            <Text style={styles.error}>{error}</Text>
             
         </View>
     );
@@ -59,18 +62,20 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     input:{
-        borderColor: "black",
         padding: 15,
-        margin: 5
+        margin: 5,
+        backgroundColor: "#e1e1e1",
+        borderRadius: 7
     }, 
     button:{
-        backgroundColor: "green",
+        backgroundColor: "lightblue",
         padding: 15,
-        borderRadius: 7
+        borderRadius: 7,
+        margin: 5
     },
     buttonTexto:{
         textAlign: "center",
-        color: "red"
+        color: "white"
     },
     error:{
         color: "red"

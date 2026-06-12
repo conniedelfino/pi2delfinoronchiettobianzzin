@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
-import { TextInput } from 'react-native-web';
+import { View, Text, Pressable, StyleSheet, TextInput } from 'react-native';
 import { db, auth } from '../../Firebase/config';
 
 function Register(props){
-    const[email,setEmail]=useState([])
-    const[userName,setUserName]=useState([])
-    const[password,setPassword]=useState([])
-    const[register,setRegister]=useState([])
-    const[registerError,setRegisterError]=useState([])
+    const[email,setEmail]=useState("");
+    const[userName,setUserName]=useState("");
+    const[password,setPassword]=useState("");
+    const[registerError,setRegisterError]=useState("");
 
     function onSubmit(email, password, userName){
         auth.createUserWithEmailAndPassword(email, password)
@@ -60,11 +58,7 @@ function Register(props){
             onChangeText={text => setPassword(text)}
             value={password}/>
 
-            {
-                registerError !== [] ?
-                <Text>{registerError}</Text> :
-                null
-            }
+            <Text style={styles.error}>{registerError}</Text>
 
             <Pressable style={styles.botonForm} onPress={()=> onSubmit(email, password, userName)}>
                 <Text style={styles.textForm}>Registrarse</Text>
