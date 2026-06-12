@@ -1,6 +1,23 @@
-import { View, Text, Pressable } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, Pressable, TextInput, StyleSheet } from 'react-native';
+import {auth} from "../../Firebase/config";
 
 function Login(props){
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    function onSubmit(){
+        auth.signInWithEmailAndPassword(email, password)
+        .then(()=> {
+            setError("");
+            props.navigation.navigate("Navegacion")
+        })
+        .catch(error => {setError(error.message)
+
+        });
+    }
+
     return(
         <View>
             <Text>Login</Text>

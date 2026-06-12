@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import Login from './src/Screens/Login/Login';
 import Register from './src/Screens/Register/Register';
 import Post from './src/Screens/Post/Post';
@@ -21,13 +20,6 @@ function App() {
         </NavigationContainer>
     );
 
-    const styles = StyleSheet.create({
-        container:{
-        backgroundColor:"#f95c5c",
-        padding:10,
-        margin:10,
-    },
-    })
 }
 
 export default App;
