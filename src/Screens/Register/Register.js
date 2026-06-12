@@ -17,7 +17,6 @@ function Register(props){
                 createdAt: Date.now(),
             })
             .then(() => {
-                setRegister(true); 
                 props.navigation.navigate("Login")
             })
             .catch( e => console.log(e))
