@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Pressable, FlatList, ActivityIndicator } from 'react-native';
 import { db } from '../../Firebase/config';
-import Post from '../../Screens/Post/Post';
+import CardPost from '../../Components/CardPost/CardPost';
 
 function Home(props) {
     
@@ -32,14 +32,11 @@ function Home(props) {
                 data = {posts}
                 keyExtractor = {item => item.id}
                 renderItem = {({ item }) => (
-                    <Post
+                    <CardPost
                         nombreUsuario = {item.doc.owner}
-                        fecha = {item.doc.fecha}
                         texto = {item.doc.description}
-                        likes = {item.doc.likes}
                         listaLikes = {item.doc.listaLikes || []}
                         id = {item.id}
-                        navegacion = {props.navigation}
                     />
                 )}    
             />

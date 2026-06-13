@@ -11,7 +11,7 @@ function Post(){
     function onSubmit(){
         db.collection('posts').add({
             owner: auth.currentUser.email,
-            description: texto,
+            description: descripcion,
             createAt: Date.now(),
             likes: 0,
             listaLikes: [],
