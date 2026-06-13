@@ -10,10 +10,12 @@ function Post(){
 
     function onSubmit(){
         db.collection('posts').add({
-            descripcion: descripcion,
-            email: auth.currentUser.email,
-            createdAt: Date.now(),
-            likes: []
+            owner: auth.currentUser.email,
+            description: texto,
+            createAt: Date.now(),
+            likes: 0,
+            listaLikes: [],
+            comentarios: [],
         })
         .then(() => {
             setPost(true)
@@ -85,4 +87,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Post
+export default Post;

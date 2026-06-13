@@ -1,11 +1,58 @@
-import { View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, Pressable, FlatList, ActivityIndicator } from 'react-native';
+import { db } from '../../Firebase/config';
+import Post from '../../Screens/Post/Post';
 
-function Home(){
-    return(
-        <View>
-            <Text>Home</Text>
+function Home(props) {
+    
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        db.collection('posts').orderBy('createAt', 'desc').onSnapshot(
+            docs => {
+                const posts = [];
+                docs.forEach(doc => {
+                    posts.push({
+                        id: doc.id,
+                        doc: doc.data()
+                    });
+                });
+                setPosts(posts);
+                setLoading(false);
+                console.log(posts);
+            }
+        )
+    }, []);
+
+    return (
+        <View style={styles.flatList}>
+            {loading == true ? <ActivityIndicator size='large' color='green'/>:
+            <FlatList
+                data = {posts}
+                keyExtractor = {item => item.id}
+                renderItem = {({ item }) => (
+                    <Post
+                        nombreUsuario = {item.doc.owner}
+                        fecha = {item.doc.fecha}
+                        texto = {item.doc.description}
+                        likes = {item.doc.likes}
+                        listaLikes = {item.doc.listaLikes || []}
+                        id = {item.id}
+                        navegacion = {props.navigation}
+                    />
+                )}    
+            />
+            }   
         </View>
     )
 }
 
-export default Home
+const styles= StyleSheet.create({
+    flatList:{
+        width: '100%',
+        flex:1
+    }
+})
+
+export default Home;
