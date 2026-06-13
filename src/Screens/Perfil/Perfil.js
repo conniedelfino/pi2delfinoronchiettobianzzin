@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
+import {db, auth} from "../../Firebase/config"
 
 function Perfil(props){
     const [userName, setUserName] = useState("");
@@ -9,8 +10,8 @@ function Perfil(props){
         db.collection("users")
         .where("email", "==", auth.currentUser.email)
         .onSnapshot(docs => { docs.forEach(doc => {
-            setUserName(docs.data().userName);
-            setEmail(docs.data().email);
+            setUserName(doc.data().userName);
+            setEmail(doc.data().email);
             })     
         })
     }, []);
@@ -32,7 +33,7 @@ function Perfil(props){
             <Text style={styles.text}>Email: {email}</Text>
 
             <Pressable style={styles.button} onPress={()=> Logout()}>
-                <Text style={styles.text}>cerrar sesion</Text>
+                <Text style={styles.text}>Cerrar sesión</Text>
             </Pressable>
         </View>
     );
