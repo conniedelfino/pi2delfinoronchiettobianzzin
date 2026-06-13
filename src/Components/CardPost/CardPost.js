@@ -12,7 +12,7 @@ function CardPost(props){
         db.collection("posts")
         .doc(props.id)
         .update({
-            listaLike: firebase.firestore.FieldValue.arrayUnion(userEmail)
+            listaLikes: firebase.firestore.FieldValue.arrayUnion(userEmail)
         })
         .then(()=> {
             console.log("+ like");
@@ -26,7 +26,7 @@ function CardPost(props){
         db.collection("posts")
         .doc(props.id)
         .update({
-            listaLike: firebase.firestore.FieldValue.arrayRemove(userEmail)
+            listaLikes: firebase.firestore.FieldValue.arrayRemove(userEmail)
         })
         .then(()=> {
             console.log("- like");
