@@ -1,25 +1,22 @@
 import { useState } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
-import { TextInput } from 'react-native-web';
+import { View, Text, Pressable, StyleSheet, TextInput } from 'react-native';
 import { db, auth } from '../../Firebase/config';
 
 function Post(){
-    const[descripcion,setDescripcion]=useState([])
-    const[post,setPost]=useState([])
-    const[postError,setPostError]=useState([])
+    const[descripcion,setDescripcion]=useState("")
+    const[postError,setPostError]=useState("")
 
     function onSubmit(){
         db.collection('posts').add({
             owner: auth.currentUser.email,
             description: descripcion,
             createAt: Date.now(),
-            likes: 0,
             listaLikes: [],
             comentarios: [],
         })
         .then(() => {
-            setPost(true)
-            setDescripcion([])
+            setDescripcion("");
+            setPostError("");
         })
         .catch(error => {
             setPostError('Fallo al crear el posteo.')

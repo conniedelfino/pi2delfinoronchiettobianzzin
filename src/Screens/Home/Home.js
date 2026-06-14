@@ -37,6 +37,7 @@ function Home(props) {
                         texto = {item.doc.description}
                         listaLikes = {item.doc.listaLikes || []}
                         id = {item.id}
+                        navegacion={props.navigation}
                     />
                 )}    
             />

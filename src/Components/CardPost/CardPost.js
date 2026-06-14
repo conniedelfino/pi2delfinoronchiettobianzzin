@@ -8,6 +8,7 @@ function CardPost(props){
     const userEmail = auth.currentUser.email;
     const esteLike = listaLikes.filter(email => email === userEmail);
 
+    
     function doyLike(){
         db.collection("posts")
         .doc(props.id)
@@ -45,16 +46,45 @@ function CardPost(props){
     }
 
     return(
-        <View>
-            <Text>{props.nombreUsuario}</Text>
-            <Text>{props.texto}</Text>
+        <View style={styles.container}>
+            <Text style={styles.container}>{props.nombreUsuario}</Text>
+            <Text style={styles.container}>{props.texto}</Text>
 
-            <Pressable onPress={()=> manejarLike()}>
-                <Text>Me gusta ({listaLikes.length})</Text>
+            <Pressable onPress={()=> manejarLike()} style={styles.botonComent}>
+                <Text style={styles.textComent}>Me gusta ({listaLikes.length})</Text>
+            </Pressable>
+
+            <Pressable onPress={()=> props.navegacion.navigate("Comentario", {id: props.id})}  style={styles.botonComent}>
+                <Text style={styles.textComent}>Comentar</Text>
             </Pressable>
 
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+   container:{
+        backgroundColor:"#a8c5ca",
+        padding:10,
+        margin:10,
+        borderRadius: 10
+    },
+    text:{
+        fontSize:15,
+        textAlign:"center",
+        fontWeight:"bold",
+    },
+    textComent:{
+        color: "#fff",
+    },
+    botonComent:{
+        backgroundColor: "#311835",
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        alignItems: "center",
+        borderRadius: 4,
+        margin: 5,
+    },
+})
 
 export default CardPost;
