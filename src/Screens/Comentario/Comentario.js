@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { Text, View, Pressable, TextInput, FlatList} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { db, auth } from "../../Firebase/config"
-import Post from '../Screens/Post/Post';
-import Comentar from '../Components/Comentar/Comentar';
+import Post from '../../Screens/Post/Post';
+import Comentar from "../../Components/Comentar/Comentar";
 
 function Comentario(props) {
     

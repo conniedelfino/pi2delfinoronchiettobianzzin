@@ -24,7 +24,7 @@ function HomeStackScreen(){
 function Navegacion(){
     return(
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={Home}/>
+            <Tab.Screen name="Home" component={HomeStack} options={{title: "Home"}}/>
             <Tab.Screen name="Post" component={Post}/>
             <Tab.Screen name="Perfil" component={Perfil}/>
         </Tab.Navigator>
