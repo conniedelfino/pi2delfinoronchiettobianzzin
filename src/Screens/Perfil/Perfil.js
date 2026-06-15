@@ -52,10 +52,13 @@ function Perfil(props){
                 data={posts}
                 keyExtractor={item => item.id}
                 renderItem={({item}) =>
-                    <Text>{item.data.description}</Text>}/>
-
+                    <view>
+                    <Text>{item.data.description}</Text>
+                    </view>
+                }
+/>
             <Pressable style={styles.button} onPress={()=> Logout()}>
-                <Text style={styles.text}>Cerrar sesión</Text>
+                <Text style={styles.buttonText}>Cerrar sesión</Text>
             </Pressable>
         </View>
     );
@@ -63,28 +66,40 @@ function Perfil(props){
 
 const styles = StyleSheet.create({
     container:{
-        padding: 20,
-        flex: 1,
-        justifyContent: "center"
+        backgroundColor:"#eee",
+        flex:1,
+        padding:20,
     },
     title:{
-        fontSize: 25,
-        marginBottom: 20,
-        textAlign: "center"
+        fontSize:25,
+        textAlign:"center",
+        marginBottom:20,
+        fontWeight:"bold"
     },
     text:{
-        fontSize: 15,
-        marginBottom: 10
+        fontSize:16,
+        marginBottom:8,
+        textAlign:"center"
+    },
+    post:{
+        backgroundColor:"#fff",
+        padding:15,
+        borderRadius:10,
+        marginVertical:8,
+        borderWidth:1,
+        borderColor:"#ccc"
     },
     button:{
-        backgroundColor: "lightblue",
-        padding: 15,
-        borderRadius: 7,
-        marginTop: 20
+        backgroundColor:"#f4b6b6",
+        padding:15,
+        borderRadius:10,
+        marginTop:20,
+        width:"60%",
+        alignSelf:"center"
     },
     buttonText:{
-        textAlign: "center",
-        color: "white"
+        textAlign:"center",
+        fontWeight:"bold"
     }
 })
 
