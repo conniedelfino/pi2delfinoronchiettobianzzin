@@ -69,47 +69,50 @@ function Register(props){
 const styles = StyleSheet.create({
     container:{
         backgroundColor:"#eee",
-        padding:10,
-        margin:10,
+        padding:20,
+        flex: 1,
+        justifyContent:"center"
     },
     title:{
         fontSize: 30,
         fontWeight:"bold",
-        marginBottom:10
+        marginBottom: 20,
+        textAlign: "center"
     },
     text:{
-        fontSize:15,
         textAlign:"center",
+        color: "white",
         fontWeight:"bold",
     },
     boton:{
         backgroundColor: "lightblue",
-        padding:12,
-        borderRadius:5,
-        marginBottom:10
+        padding: 15,
+        borderRadius: 5,
+        marginBottom: 5
     },
     textForm:{
         color: "#fff",
+        fontWeight: "bold"
     },
     botonForm:{
-        backgroundColor: "#28a745",
-        paddingHorizontal: 10,
-        paddingVertical: 6,
+        backgroundColor: "lightblue",
+        padding: 15,
         alignItems: "center",
-        borderRadius: 4,
-        borderWidth: 1,
-        borderStyle: "solid",
-        borderColor: "#28a745",
+        borderRadius: 5,
+        margin: 5
     },
     input:{
-        height: 20,
-        paddingVertical: 15,
-        paddingHorizontal: 10,
+        padding: 15,
+        margin: 5,
+        backgroundColor: "#fff",
         borderWidth: 1,
         borderColor: "#ccc",
-        borderStyle: "solid",
-        borderRadius: 6,
-        marginVertical: 10, 
+        borderRadius: 5
+    },
+    error:{
+        color: "red",
+        textAlign:"center",
+        marginTop: 10
     }
 })
 

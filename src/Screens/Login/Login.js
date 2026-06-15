@@ -52,20 +52,24 @@ function Login(props){
 
 const styles = StyleSheet.create({
     container:{
+        backgroundColor: "#fff",
         padding: 20,
         flex: 1,
         justifyContent: "center"
     },
     title:{
-        fontSize: 25,
-        margin: 10,
+        fontSize: 30,
+        fontWeight: "bold",
+        marginBottom: 20,
         textAlign: "center"
     },
     input:{
         padding: 15,
         margin: 5,
-        backgroundColor: "#e1e1e1",
-        borderRadius: 7
+        backgroundColor: "#fff",
+        borderRadius: 7,
+        borderWidth: 1,
+        borderColor: "#ccc"
     }, 
     button:{
         backgroundColor: "lightblue",
@@ -75,10 +79,13 @@ const styles = StyleSheet.create({
     },
     buttonTexto:{
         textAlign: "center",
-        color: "white"
+        color: "white",
+        fontWeight: "bold"
     },
     error:{
-        color: "red"
+        color: "red",
+        textAlign:"center",
+        marginTop: 10
     }
 })
 
