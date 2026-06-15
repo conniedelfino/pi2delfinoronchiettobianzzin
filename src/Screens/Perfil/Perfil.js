@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, FlatList } from 'react-native';
 import {db, auth} from "../../Firebase/config"
+
 
 function Perfil(props){
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
+    const [posts, setPosts] = useState("")
 
     useEffect(()=>{
         db.collection("users")
@@ -14,6 +16,18 @@ function Perfil(props){
             setEmail(doc.data().email);
             })     
         })
+        db.collection("posts")
+        .where("owner", "==", auth.currentUser.email)
+        .onSnapshot(docs => {
+            let postsUsuario = [];
+            docs.forEach(doc => {
+                postsUsuario.push({
+                    id: doc.id,
+                    data: doc.data()
+        })
+    })
+    setPosts(postsUsuario)
+})
     }, []);
 
     function Logout(){
@@ -31,6 +45,14 @@ function Perfil(props){
             <Text style={styles.title}>Mi Perfil</Text>
             <Text style={styles.text}>Usuario: {userName}</Text>
             <Text style={styles.text}>Email: {email}</Text>
+
+            <Text style={styles.title}>Mis posteos</Text>
+
+            <FlatList
+                data={posts}
+                keyExtractor={item => item.id}
+                renderItem={({item}) =>
+                    <Text>{item.data.description}</Text>}/>
 
             <Pressable style={styles.button} onPress={()=> Logout()}>
                 <Text style={styles.text}>Cerrar sesión</Text>
