@@ -51,36 +51,38 @@ function Post(){
 const styles = StyleSheet.create({
     container:{
         backgroundColor:"#eee",
-        padding:10,
+        padding:20,
         margin:10,
+        borderRadius:10,
     },
     title:{
-        fontSize: 30,
+        fontSize: 28,
         fontWeight:"bold",
-        marginBottom:10
+        marginBottom:15,
+        textAlign: "center"
     },
     textForm:{
         color: "#fff",
+        fontWeight: "bold",
     },
     botonForm:{
-        backgroundColor: "#28a745",
+        backgroundColor: "lightblue",
         paddingHorizontal: 10,
-        paddingVertical: 6,
+        paddingVertical: 10,
         alignItems: "center",
-        borderRadius: 4,
-        borderWidth: 1,
-        borderStyle: "solid",
-        borderColor: "#28a745",
+        borderRadius: 6,
+        marginTop: 10,
     },
     input:{
-        height: 100,
+        height: 120,
         paddingVertical: 15,
         paddingHorizontal: 10,
         borderWidth: 1,
         borderColor: "#ccc",
         borderStyle: "solid",
         borderRadius: 6,
-        marginVertical: 10, 
+        marginVertical: 10,
+        backgroundColor: "#fff"
     }
 })
 

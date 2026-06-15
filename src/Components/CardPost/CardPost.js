@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     textComent:{
-        color: #fff,
+        color: "#fff",
         fontWeight: "bold",
     },
     botonComent:{
