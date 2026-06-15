@@ -47,8 +47,8 @@ function CardPost(props){
 
     return(
         <View style={styles.container}>
-            <Text style={styles.container}>{props.nombreUsuario}</Text>
-            <Text style={styles.container}>{props.texto}</Text>
+            <Text style={styles.user}>{props.nombreUsuario}</Text>
+            <Text style={styles.text}>{props.texto}</Text>
 
             <Pressable onPress={()=> manejarLike()} style={styles.botonComent}>
                 <Text style={styles.textComent}>Me gusta ({listaLikes.length})</Text>
@@ -64,21 +64,28 @@ function CardPost(props){
 
 const styles = StyleSheet.create({
    container:{
-        backgroundColor:"#a8c5ca",
-        padding:10,
+        backgroundColor:"#fff",
+        padding:15,
         margin:10,
-        borderRadius: 10
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: "#ccc"
     },
     text:{
         fontSize:15,
-        textAlign:"center",
-        fontWeight:"bold",
+        marginBottom: 8,
+    },
+    user:{
+        fontSize: 13,
+        fontWeight: "bold",
+        marginBottom: 5,
     },
     textComent:{
-        color: "#fff",
+        color: #fff,
+        fontWeight: "bold",
     },
     botonComent:{
-        backgroundColor: "#311835",
+        backgroundColor: "lightblue",
         paddingHorizontal: 10,
         paddingVertical: 6,
         alignItems: "center",

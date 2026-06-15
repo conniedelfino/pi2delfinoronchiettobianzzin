@@ -48,8 +48,10 @@ function Home(props) {
 
 const styles= StyleSheet.create({
     flatList:{
+        backgroundColor:"#eee",
         width: '100%',
-        flex:1
+        flex:1,
+        padding: 10
     }
 })
 
