@@ -51,7 +51,7 @@ function CardPost(props){
             <Text style={styles.text}>{props.texto}</Text>
 
             <Pressable onPress={()=> manejarLike()} style={styles.botonComent}>
-                <Text style={styles.textComent}>Me gusta ({listaLikes.length})</Text>
+                <Text style={styles.textComent}>Me gusta ❤️ ({listaLikes.length})</Text>
             </Pressable>
 
             <Pressable onPress={()=> props.navegacion.navigate("Comentario", {id: props.id})}  style={styles.botonComent}>

@@ -22,12 +22,14 @@ function Register(props){
             .catch( e => console.log(e))
         })     
         .catch( error => {
-            setRegisterError(error.message)
+            setRegisterError("error en el registro!")
+            console.log(error)
         })
 
         console.log("Email", email)
         console.log("Username", userName)
     }
+
 
     return(
         <View style={styles.container}>

@@ -1,3 +1,5 @@
+import React, { useEffect} from "react";
+import auth from "../../Firebase/config";
 import Home from "../../Screens/Home/Home";
 import Post from "../../Screens/Post/Post";
 import Perfil from "../../Screens/Perfil/Perfil";
@@ -16,19 +18,29 @@ const HomeStack = createNativeStackNavigator();
 
 function HomeStackScreen(){
         return(
-            <HomeStack.Navigator>
+            <HomeStack.Navigator screenOptions={{headerShown: false}}>
                 <HomeStack.Screen name="Home" component={Home}/>
                 <HomeStack.Screen name="Comentario" component={Comentario}/>
             </HomeStack.Navigator>
         )
     }
 
-function Navegacion(){
+function Navegacion(props){
+    useEffect(()=> {
+        auth.onAuthStateChanged(user => {
+            if (!user){
+            props.navegation.navigate("Login");
+            }
+        });
+    }, [])
+
+
+
     return(
-        <Tab.Navigator>
+        <Tab.Navigator screenOptions={{headerShown: false}}>
 
             <Tab.Screen
-                name="Home" 
+                name="Inicio" 
                 component={HomeStackScreen} 
                 options={{
                     tabBarIcon: () => (

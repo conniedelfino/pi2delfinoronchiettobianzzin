@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Pressable, FlatList, ActivityIndicator } from 'react-native';
-import { db } from '../../Firebase/config';
+import { db, auth } from '../../Firebase/config';
 import CardPost from '../../Components/CardPost/CardPost';
 
 function Home(props) {
@@ -9,24 +9,26 @@ function Home(props) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        db.collection('posts').orderBy('createAt', 'desc').onSnapshot(
-            docs => {
-                const posts = [];
-                docs.forEach(doc => {
-                    posts.push({
-                        id: doc.id,
-                        doc: doc.data()
+        db.collection('posts')
+            .orderBy('createAt', 'desc')
+            .onSnapshot(
+                docs => {
+                    const posts = [];
+                    docs.forEach(doc => {
+                        posts.push({
+                            id: doc.id,
+                            doc: doc.data()
+                        });
                     });
-                });
-                setPosts(posts);
-                setLoading(false);
-                console.log(posts);
-            }
+                    setPosts(posts);
+                    setLoading(false);
+                    console.log(posts);
+                }
         )
     }, []);
 
     return (
-        <View style={styles.flatList}>
+        <View style={styles.container}>
             {loading == true ? <ActivityIndicator size='large' color='green'/>:
             <FlatList
                 data = {posts}
@@ -35,7 +37,7 @@ function Home(props) {
                     <CardPost
                         nombreUsuario = {item.doc.owner}
                         texto = {item.doc.description}
-                        listaLikes = {item.doc.listaLikes || []}
+                        listaLikes = {item.doc.listaLikes ? item.doc.listaLikes : []}
                         id = {item.id}
                         navegacion={props.navigation}
                     />
@@ -47,7 +49,7 @@ function Home(props) {
 }
 
 const styles= StyleSheet.create({
-    flatList:{
+    container:{
         backgroundColor:"#eee",
         width: '100%',
         flex:1,

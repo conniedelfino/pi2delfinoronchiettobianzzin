@@ -13,6 +13,7 @@ function Comentario(props) {
     useEffect(() => {
         db.collection('comentarios')
             .where('id', '==', id)
+            .orderBy('createAt', 'desc')
             .onSnapshot(docs=> {
                 let comments =[];
                 docs.forEach(doc=> {
@@ -26,6 +27,10 @@ function Comentario(props) {
         }, [])
 
     function Comentando() {
+        if (texto === ""){
+            return;
+        }
+
         db.collection('comentarios').add({
             owner: auth.currentUser.email,
             description: texto,
@@ -61,10 +66,15 @@ function Comentario(props) {
                 <Text>Comentar</Text>
             </Pressable>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        padding: 10,
+        backgroundColor: "#eee"
+    },
     comentarioDelPost: {
         backgroundColor: "rgb(168, 168, 220)",
         padding: 12,

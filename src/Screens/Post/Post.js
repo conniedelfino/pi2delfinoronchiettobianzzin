@@ -2,11 +2,15 @@ import { useState } from 'react';
 import { View, Text, Pressable, StyleSheet, TextInput } from 'react-native';
 import { db, auth } from '../../Firebase/config';
 
-function Post(){
+function Post(props){
     const[descripcion,setDescripcion]=useState("")
     const[postError,setPostError]=useState("")
 
     function onSubmit(){
+        if (descripcion === ""){
+            return;
+        }
+
         db.collection('posts').add({
             owner: auth.currentUser.email,
             description: descripcion,
@@ -17,6 +21,8 @@ function Post(){
         .then(() => {
             setDescripcion("");
             setPostError("");
+            props.navigation.navigate("Inicio", { screen: "Home" });
+
         })
         .catch(error => {
             setPostError('Fallo al crear el posteo.')
@@ -34,12 +40,8 @@ function Post(){
             placeholder='Escribí aquí tu comentario...'
             onChangeText={text => setDescripcion(text)}
             value={descripcion}/>
-
-            {
-                postError !== [] ?
-                <Text>{postError}</Text> :
-                null
-            }
+        
+            <Text>{postError}</Text> :
 
             <Pressable style={styles.botonForm} onPress={()=> onSubmit()}>
                 <Text style={styles.textForm}>Publicar post</Text>
