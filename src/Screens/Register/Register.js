@@ -27,7 +27,6 @@ function Register(props){
 
         console.log("Email", email)
         console.log("Username", userName)
-        console.log("Password", password)
     }
 
     return(

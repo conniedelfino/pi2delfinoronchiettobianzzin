@@ -6,7 +6,7 @@ import {db, auth} from "../../Firebase/config"
 function Perfil(props){
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
-    const [posts, setPosts] = useState("")
+    const [posts, setPosts] = useState([]);
 
     useEffect(()=>{
         db.collection("users")
@@ -52,9 +52,9 @@ function Perfil(props){
                 data={posts}
                 keyExtractor={item => item.id}
                 renderItem={({item}) =>
-                    <view>
+                    <View style={styles.post}>
                     <Text>{item.data.description}</Text>
-                    </view>
+                    </View>
                 }
 />
             <Pressable style={styles.button} onPress={()=> Logout()}>

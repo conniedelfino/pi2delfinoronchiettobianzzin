@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, Pressable, TextInput, StyleSheet } from 'react-native';
 import {auth} from "../../Firebase/config";
 
 function Login(props){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [login, setLogin] = useState(false)
     const [error, setError] = useState("");
 
     function onSubmit(){
-        console.log(email, password)
         auth.signInWithEmailAndPassword(email, password)
         .then(()=> {
             setError("");
@@ -19,6 +17,14 @@ function Login(props){
 
         });
     }
+
+    useEffect(()=> {
+        auth.onAuthStateChanged(user => {
+            if(user){
+                props.navigation.navigate("Navegacion");
+            }
+        });
+    }, [])
 
     return(
         <View style={styles.container}>
