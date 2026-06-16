@@ -19,7 +19,6 @@ function HomeStackScreen(){
             <HomeStack.Navigator>
                 <HomeStack.Screen name="Home" component={Home}/>
                 <HomeStack.Screen name="Comentario" component={Comentario}/>
-
             </HomeStack.Navigator>
         )
     }
