@@ -41,7 +41,7 @@ function Post(props){
             onChangeText={text => setDescripcion(text)}
             value={descripcion}/>
         
-            <Text>{postError}</Text> :
+            <Text>{postError}</Text> 
 
             <Pressable style={styles.botonForm} onPress={()=> onSubmit()}>
                 <Text style={styles.textForm}>Publicar post</Text>

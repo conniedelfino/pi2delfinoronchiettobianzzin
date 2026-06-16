@@ -1,5 +1,5 @@
 import React, { useEffect} from "react";
-import auth from "../../Firebase/config";
+import {auth} from "../../Firebase/config";
 import Home from "../../Screens/Home/Home";
 import Post from "../../Screens/Post/Post";
 import Perfil from "../../Screens/Perfil/Perfil";
@@ -29,7 +29,7 @@ function Navegacion(props){
     useEffect(()=> {
         auth.onAuthStateChanged(user => {
             if (!user){
-            props.navegation.navigate("Login");
+            props.navigation.navigate("Login");
             }
         });
     }, [])
