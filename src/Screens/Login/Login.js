@@ -5,9 +5,11 @@ import {auth} from "../../Firebase/config";
 function Login(props){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [login, setLogin] = useState(false)
     const [error, setError] = useState("");
 
     function onSubmit(){
+        console.log(email, password)
         auth.signInWithEmailAndPassword(email, password)
         .then(()=> {
             setError("");

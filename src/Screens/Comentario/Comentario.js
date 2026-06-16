@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Text, View, Pressable, TextInput, FlatList} from 'react-native';
+import { Text, View, Pressable, TextInput, FlatList, StyleSheet} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { db, auth } from "../../Firebase/config"
 import Post from '../../Screens/Post/Post';
@@ -68,12 +68,28 @@ function Comentario(props) {
             <TextInput
                 value={texto}
                 onChangeText={texto => setTexto(texto)}
+                style={styles.comentarioDelPost}
             />
-            <Pressable onPress={() => Comentando()}>
+            <Pressable onPress={() => Comentando()} style={styles.botonComentdelPost}>
                 <Text>Comentar</Text>
             </Pressable>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    comentarioDelPost: {
+        backgroundColor: "rgb(168, 168, 220)",
+        padding: 12,
+        margin: 3,
+        borderRadius: 5
+    },
+    botonComentdelPost:{
+        backgroundColor: "#a8a7a7",
+        padding: 3,
+        borderRadius: 5,
+        margin: 3
+    }
+})
 
 export default Comentario;
