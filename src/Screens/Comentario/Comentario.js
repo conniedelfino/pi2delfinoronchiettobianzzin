@@ -68,6 +68,7 @@ function Comentario(props) {
             <TextInput
                 value={texto}
                 onChangeText={texto => setTexto(texto)}
+                placeholder='Deja tu comentario aquí!'
                 style={styles.comentarioDelPost}
             />
             <Pressable onPress={() => Comentando()} style={styles.botonComentdelPost}>
